@@ -2,8 +2,10 @@ import { FormEvent, useState } from 'react';
 import { PlusCircle } from 'phosphor-react';
 import styles from './styles.module.css';
 import { Task } from '../../components/Task';
-import { TasksType } from './types';
 import { WithoutTasks } from '../../components/WithoutTasks';
+import { TasksType } from './types';
+
+import logoImage from '../../assets/logo.svg';
 
 export const Home: React.FC = () => {
   const [newTask, setNewTask] = useState<TasksType[]>([]);
@@ -45,7 +47,7 @@ export const Home: React.FC = () => {
     <main className={styles.container}>
       <header className={styles.header}>
         <img
-          src="/src/assets/logo.svg"
+          src={logoImage}
           alt="Todo Logo"
         />
       </header>

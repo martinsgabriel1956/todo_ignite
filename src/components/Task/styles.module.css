@@ -39,7 +39,7 @@
 }
 
 .taskContent .checkboxContainer input[type="checkbox"]:checked:before {
-  content: url(/src/assets/check.svg);
+  content: url("../../assets/check.svg");
   position: absolute;
   top: 2px;
   left: 4px;
