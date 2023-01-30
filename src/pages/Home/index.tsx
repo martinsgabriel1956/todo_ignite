@@ -3,6 +3,7 @@ import { PlusCircle } from 'phosphor-react';
 import styles from './styles.module.css';
 import { Task } from '../../components/Task';
 import { TasksType } from './types';
+import { WithoutTasks } from '../../components/WithoutTasks';
 
 export const Home: React.FC = () => {
   const [newTask, setNewTask] = useState<TasksType[]>([]);
@@ -38,16 +39,25 @@ export const Home: React.FC = () => {
   }
 
   const completedTasksAmount = newTask.filter((task) => task.isCompleted === true).length;
+  const isGreaterThanZero = newTask!.length > 0;
 
   return (
     <main className={styles.container}>
       <header className={styles.header}>
-        <img src="/src/assets/logo.svg" alt="Todo Logo" />
+        <img
+          src="/src/assets/logo.svg"
+          alt="Todo Logo"
+        />
       </header>
       <form onSubmit={handleCreateNewTask}>
         <div className={styles.inputContainer}>
           <label htmlFor="" />
-          <input value={taskTitle} onChange={(event) => setTaskTitle(event.target.value)} type="text" placeholder="Adicione uma nova tarefa" />
+          <input
+            value={taskTitle}
+            onChange={(event) => setTaskTitle(event.target.value)}
+            type="text"
+            placeholder="Adicione uma nova tarefa"
+          />
         </div>
         <button className={styles.createToDoButton}>
           Criar
@@ -56,23 +66,30 @@ export const Home: React.FC = () => {
       </form>
       <div className={styles.tasksContainer}>
         <div className={styles.typeTasks}>
-          <span className={styles.createdTask}>Tarefas criadas <span className={styles.badge}>{newTask.length}</span></span>
-          <span className={styles.concludedTask}>Concluídas <span className={styles.badge}>{newTask.length > 0 ? `${completedTasksAmount} de ${newTask.length}` : 0}  </span></span>
+          <span className={styles.createdTask}>
+            Tarefas criadas
+            <span className={styles.badge}>{newTask.length}</span>
+          </span>
+          <span className={styles.concludedTask}>
+            Concluídas
+            <span className={styles.badge}>
+              {newTask.length > 0 ? `${completedTasksAmount} de ${newTask.length}` : 0}
+            </span>
+          </span>
         </div>
-        {newTask!.length > 0 ? (
+        {isGreaterThanZero ? (
           <div className={styles.withTask}>
             {newTask.map((task) => (
-              <Task completeTask={() => handleToggleTaskCompletion(task.id)} key={task.id} data={task} deleteTask={() => handleRemoveTask(task.id)} />
+              <Task
+                key={task.id}
+                completeTask={() => handleToggleTaskCompletion(task.id)}
+                data={task}
+                deleteTask={() => handleRemoveTask(task.id)}
+              />
             ))}
           </div>
         ) : (
-          <div className={styles.withoutTask}>
-            <img src="/src/assets/clipboard.svg" alt="" />
-            <span className={styles.withoutTaskMessage}>
-              <strong>Você ainda não tem tarefas cadastradas</strong> <br />
-              Crie tarefas e organize seus itens a fazer
-            </span>
-          </div>
+          <WithoutTasks />
         )}
       </div>
     </main>
