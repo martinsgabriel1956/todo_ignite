@@ -1,4 +1,7 @@
+import { TasksType } from "../../pages/Home/types";
+
 export interface TaskProps {
   deleteTask: () => void;
-  title: string;
+  data: TasksType;
+  completeTask: () => void;
 }

@@ -38,10 +38,10 @@
   cursor: pointer;
 }
 
-.taskContent .checkboxContainer img {
-  content: "";
+.taskContent .checkboxContainer input[type="checkbox"]:checked:before {
+  content: url(/src/assets/check.svg);
   position: absolute;
-  top: 6px;
+  top: 2px;
   left: 4px;
 }
 
