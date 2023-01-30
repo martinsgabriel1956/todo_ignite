@@ -11,6 +11,10 @@ export const Home: React.FC = () => {
   function handleCreateNewTask(event: FormEvent) {
     event.preventDefault();
 
+    if (taskTitle.trim() === "") {
+      return;
+    }
+
     const task = {
       id: crypto.randomUUID(),
       title: taskTitle,
