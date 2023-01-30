@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { Trash } from "phosphor-react";
 import styles from './styles.module.css';
+import { TaskProps } from "./types";
 
-export const Task: React.FC = () => {
+export const Task: React.FC<TaskProps> = ({ deleteTask, title }) => {
   const [isChecked, setIsChecked] = useState(false);
 
   function handleChecked() {
@@ -19,9 +19,9 @@ export const Task: React.FC = () => {
             <img src="/src/assets/check.svg" alt="Fala comigo" />
           )}
         </div>
-        <p className={isChecked ? styles.isChecked : ""}>Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.</p>
+        <p className={isChecked ? styles.isChecked : ""}>{title}</p>
       </div>
-      <button className="">
+      <button className="" onClick={deleteTask}>
         <img src="/src/assets/trash.svg" alt="Fala comigo" />
       </button>
     </div>
