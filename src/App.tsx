@@ -1,7 +1,8 @@
 import './styles/global.css';
+import { Home } from './pages/Home';
 
 export function App() {
   return (
-    <h1>Hello World!</h1>
+    <Home />
   )
 }
