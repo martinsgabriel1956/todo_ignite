@@ -1,5 +1,6 @@
-import styles from './styles.module.css';
 import { PlusCircle } from 'phosphor-react';
+import styles from './styles.module.css';
+import { Task } from '../../components/Task';
 
 export const Home: React.FC = () => {
   return (
@@ -23,13 +24,19 @@ export const Home: React.FC = () => {
           <span className={styles.concludedTask}>Concluídas <span className={styles.badge}>0</span></span>
         </div>
 
-        <div className={styles.withoutTask}>
+        <div className={styles.withTask}>
+          <Task />
+          <Task />
+          <Task />
+        </div>
+
+        {/* <div className={styles.withoutTask}>
           <img src="/src/assets/clipboard.svg" alt="" />
           <span className={styles.withoutTaskMessage}>
             <strong>Você ainda não tem tarefas cadastradas</strong> <br />
             Crie tarefas e organize seus itens a fazer
           </span>
-        </div>
+        </div> */}
       </div>
     </main>
   )
